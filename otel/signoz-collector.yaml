@@ -1,0 +1,44 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: "0.0.0.0:4317"
+      http:
+        endpoint: "0.0.0.0:4318"
+
+processors:
+  batch: {}
+
+exporters:
+  # Debug exporter prints telemetry to stdout (docker logs)
+  debug:
+    verbosity: detailed
+
+  # Exporter to SigNoz staging
+  otlp/signoz:
+    endpoint: "ingest.us.staging.signoz.cloud:443"
+    tls:
+      insecure: false
+    headers:
+      signoz-ingestion-key: "z-DZtRQnZQ6iIafBH9cPUCUb-NkxW0gJamvj"
+
+service:
+  telemetry:
+    logs:
+      level: "debug"   # collector itself logs at debug level
+
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug, otlp/signoz]
+
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug, otlp/signoz]
+
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug, otlp/signoz]

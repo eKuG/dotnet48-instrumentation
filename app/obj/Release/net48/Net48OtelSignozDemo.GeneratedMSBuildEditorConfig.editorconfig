@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = Net48OtelSignozDemo
+build_property.ProjectDir = C:\Users\Acer\Downloads\ekansh-demo\net48-signoz-demo\app\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 
