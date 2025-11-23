@@ -24,3 +24,7 @@ $env:OTEL_LOG_LEVEL="debug"
 
 
 Application -> Otel Collector -> SigNoz Collector
+
+Application Server 
+    AppService 1
+    AppService 2
